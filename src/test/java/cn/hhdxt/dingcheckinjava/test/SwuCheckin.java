@@ -28,8 +28,8 @@ public class SwuCheckin {
             .build();
 
     public static void main(String[] args) {
-        String username = "f2236607434";
-        String password = "fxj20060127.";
+        String username = "你的学号";
+        String password = "你的密码";
 
         if (args.length >= 2) {
             username = args[0];

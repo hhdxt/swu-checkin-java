@@ -49,8 +49,9 @@ public class SWULoginDemo {
             System.out.println("Python 脚本识别结果: " + validateCode);
 
             // 4. 将账号、密码和识别到的验证码填入页面
-            page.fill("#loginName", "f2236607434");
-            page.fill("#password", "fxj20060127.");
+            // TODO: 替换为你的西南大学账号密码
+            // page.fill("#loginName", "你的学号");
+            // page.fill("#password", "你的密码");
             
             // 填入验证码
             page.fill("#validateCode", validateCode);

@@ -21,8 +21,11 @@ import java.util.Map;
 @EnableScheduling  // 开启定时任务
 public class DingCheckinJavaApplication {
 
-    private static final String API_KEY_SUCCESS = "d8c8a120199eefe6fb62eb8c4347618e914128f76d3ddda882c4381d9f989dc2";
-    private static final String API_KEY_FAILURE = "644bd3621992e6e47486fffb53e5460cc12bb0f405a54142ea0d391d09dfd1c1";
+    // TODO: 请替换为你的BillionMail邮件API密钥 (https://www.niui.cn/)
+    // 成功发送邮件时的 API Key
+    private static final String API_KEY_SUCCESS = "你的BillionMailAPI密钥-成功";
+    // 发送失败邮件时的 API Key
+    private static final String API_KEY_FAILURE = "你的BillionMailAPI密钥-失败";
 
 
     private final IUserAccountService userAccountService;
@@ -44,11 +47,9 @@ public class DingCheckinJavaApplication {
                             return;
                         case 2:
                             log.info("第{}次登录 - 今日已打卡", i + 1);
-//                        BillionMailUtil.sendMail("f2236607434@email.swu.edu.cn", API_KEY_FAILURE);
                             return;
                         case 0:
                             log.info("第{}次登录 - 暂无打卡任务", i + 1);
-//                        BillionMailUtil.sendMail("f2236607434@email.swu.edu.cn", API_KEY_FAILURE);
                             return;
                         case -1:
                         default:

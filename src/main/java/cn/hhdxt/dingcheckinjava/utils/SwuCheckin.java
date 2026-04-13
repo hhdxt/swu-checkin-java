@@ -223,7 +223,7 @@ public class SwuCheckin {
     private static String recognizeCaptchaWithPython(String imagePath) {
         StringBuilder result = new StringBuilder();
         try {
-            ProcessBuilder pb = new ProcessBuilder("python", "D:\\javaCode\\ding-checkin-java\\src\\main\\java\\cn\\hhdxt\\dingcheckinjava\\utils\\ocr_tool.py", imagePath);
+            ProcessBuilder pb = new ProcessBuilder("python3", "/app/ocr_tool.py", imagePath);
             Process process = pb.start();
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
             String line;

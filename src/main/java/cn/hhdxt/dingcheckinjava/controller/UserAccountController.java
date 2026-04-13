@@ -37,7 +37,8 @@ public class UserAccountController {
 
 
         try {
-            int result = SwuCheckin.start("f2236607434", "fxj20060127.");
+            // TODO: 请替换为你的西南大学账号密码，或从配置文件中读取
+            int result = SwuCheckin.start("你的学号", "你的密码");
             switch (result) {
                 case 1:
                     return ("打卡成功");
