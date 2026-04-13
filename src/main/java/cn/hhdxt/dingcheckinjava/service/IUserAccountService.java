@@ -2,6 +2,8 @@ package cn.hhdxt.dingcheckinjava.service;
 
 
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -13,5 +15,5 @@ import java.util.HashMap;
  */
 public interface IUserAccountService  {
 
-    HashMap<String,String> getUserAccount();
+    List<Map<String,String>> getUserAccount();
 }

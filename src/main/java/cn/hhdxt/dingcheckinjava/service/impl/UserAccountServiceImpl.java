@@ -1,9 +1,13 @@
 package cn.hhdxt.dingcheckinjava.service.impl;
 
+import cn.hhdxt.dingcheckinjava.properties.accountProperties;
 import cn.hhdxt.dingcheckinjava.service.IUserAccountService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -14,14 +18,14 @@ import java.util.HashMap;
  * @since 2026-03-02
  */
 @Service
+@RequiredArgsConstructor
 public class UserAccountServiceImpl implements IUserAccountService {
 
-    public HashMap<String,String> getUserAccount(){
-        HashMap<String,String> userAccount = new HashMap<>();
+    private final accountProperties accountProperties;
 
-        userAccount.put("username","f2236607434");
-        userAccount.put("password","fxj20060127.");
-        return userAccount;
+    public List<Map<String,String>> getUserAccount(){
+
+        return accountProperties.getUserAccount();
     }
 
 }

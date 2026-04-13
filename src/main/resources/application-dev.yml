@@ -6,3 +6,9 @@
 #    database: ding-checkin
 #    username: root
 #    password: root123
+
+info:
+  user-account:
+    - username: f2236607434
+      password: fxj20060127.
+      email: f2236607434@email.swu.edu.cn
