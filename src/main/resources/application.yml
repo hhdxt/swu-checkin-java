@@ -1,0 +1,40 @@
+spring:
+  profiles:
+    active: dev
+  main:
+    allow-circular-references: true
+#  datasource:
+#
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://${sky.datasource.host}:${sky.datasource.port}/${sky.datasource.database}?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+#    username: ${sky.datasource.username}
+#    password: ${sky.datasource.password}
+
+
+#xxl:
+#  job:
+#    admin:
+#      # 调度中心地址：云服务器的公网 IP 和 Docker 映射的端口
+#      addresses: http://115.190.153.81:8080/xxl-job-admin
+#    # 令牌：必须与 Docker Compose 环境变量 PARAMS 里的 --xxl.job.accessToken 完全一致
+#    accessToken: my_token
+#    executor:
+#      # 执行器 AppName：必须与管理后台“执行器管理”中新增的 AppName 严格一致
+#      appname: xxl-job-executor-sample
+#
+#      # 【关键】注册 IP：告诉云端调度中心通过哪个域名/公网 IP 访问你
+#      # 这里填写 FRP 的公网域名
+#      ip: frp.tygccg.xyz
+#
+#      # 【核心】执行器端口：
+#      # 1. 在配置类中，它是 Netty 服务器在本地电脑监听的端口（对应 frpc.ini 的 local_port）
+#      # 2. 同时它也会作为注册端口发送给云端（对应 frpc.ini 的 remote_port）
+#      # 注意：如果 local_port 和 remote_port 不一致，请确保此处的 port 与 remote_port 对齐，
+#      # 并在配置类中使用 .setPort() 监听本地真实的端口。
+#      port: 18081
+#
+#      # 日志配置
+#      logpath: /data/applogs/xxl-job/jobhandler # 执行器运行日志存放路径
+#      logretentiondays: 30                      # 日志保留天数
+server:
+  port: 8080
