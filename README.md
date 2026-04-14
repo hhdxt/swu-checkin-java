@@ -16,7 +16,8 @@
 - Java 17
 - Spring Boot 3
 - Playwright（浏览器自动化）
-- BillionMail邮件服务
+- Xvfb（虚拟显示器）
+- XXL-Job（分布式定时任务）
 
 ## 快速开始
 
@@ -49,13 +50,72 @@ private static final String API_KEY_SUCCESS = "你的成功邮件API密钥";
 private static final String API_KEY_FAILURE = "你的失败邮件API密钥";
 ```
 
-### 4. 构建运行
+### 4. 构建 Jar 包
 
 ```bash
-# 构建
 ./mvnw clean package -DskipTests
+```
 
-# 运行
+### 5. Docker 部署（推荐）
+
+#### 5.1 构建镜像
+
+```bash
+docker build -t swu-checkin-xvfb:v1 .
+```
+
+#### 5.2 启动容器
+
+```bash
+docker run -d -p 8080:8080 --name swu-checkin-task \
+  --restart unless-stopped \
+  --memory="2g" \
+  -e TZ=Asia/Shanghai \
+  swu-checkin-xvfb:v1
+```
+
+参数说明：
+- `-d`: 后台运行
+- `-p 8080:8080`: 端口映射（宿主机端口:容器端口）
+- `--name swu-checkin-task`: 容器名称
+- `--restart unless-stopped`: 开机自启
+- `--memory="2g"`: 限制内存使用
+- `-e TZ=Asia/Shanghai`: 设置时区
+
+#### 5.3 测试
+
+首次运行会下载浏览器依赖包，请耐心等待。
+
+```bash
+# 测试打卡接口
+curl http://localhost:8080/test
+
+# 查看运行日志
+docker logs -f swu-checkin-task
+```
+
+正常响应说明：
+- `暂无打卡计划`: 程序运行正常，当前没有打卡任务
+- `打卡成功`: 打卡成功
+- `今日已打卡`: 今日已打过卡
+
+#### 5.4 停止与重启
+
+```bash
+# 停止容器
+docker stop swu-checkin-task
+
+# 重启容器
+docker restart swu-checkin-task
+```
+
+### 6. 本地自动打卡
+
+将程序部署到自己的电脑上，保持电脑开机并联网，即可实现每天自动打卡。
+
+### 7. 直接运行（非 Docker）
+
+```bash
 java -jar target/ding-checkin-java-0.0.1-SNAPSHOT.jar
 ```
 
